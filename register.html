@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Registration | VoltFix Reliant</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            background: #020617;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 64px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(20px);
+        }
+
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 40px 24px;
+                border-radius: 16px;
+            }
+
+            .terminal-header h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        .terminal-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .secure-input {
+            width: 100%;
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 24px;
+            transition: var(--transition-base);
+        }
+
+        .secure-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt" style="color: var(--accent);"></i> VoltFix <span
+                    style="font-weight: 300; opacity: 0.5;">Reliability</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="index.html">Home <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html">Home 1</a>
+                        <a href="index3.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html">About us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <a href="#">Dashboards <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard-user.html">User Console</a>
+                        <a href="dashboard-admin.html">Admin Terminal</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="active">Account<i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="auth.html?mode=login">Login Portal</a>
+                        <a href="auth.html?mode=register">Register Account</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-tools">
+                <button id="rtl-toggle" class="btn" style="margin-right: 8px; font-weight: 800;"><i
+                        class="fas fa-globe"></i></button>
+                <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="blueprint-overlay"></div>
+
+    <main class="login-screen" style="flex-direction: column; padding-top: 120px;">
+        <div class="tech-grid" style="position: absolute; inset: 0; opacity: 0.1;"></div>
+
+        <div class="login-box">
+            <div class="terminal-header">
+                <div class="status-badge">
+                    <span
+                        style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block;"></span>
+                    Personnel Deployment
+                </div>
+                <h1 style="color: white; font-size: 2.25rem; font-weight: 900; margin-bottom: 12px;">Create Account</h1>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem;">Initialize your operator profile for
+                    secure network deployment access.</p>
+            </div>
+
+            <form>
+                <div style="margin-bottom: 24px;">
+                    <label
+                        style="display: block; font-size: 0.7rem; font-weight: 800; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Full
+                        Name</label>
+                    <input type="text" class="secure-input" placeholder="Operator Name">
+
+                    <label
+                        style="display: block; font-size: 0.7rem; font-weight: 800; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Work
+                        Email</label>
+                    <input type="email" class="secure-input" placeholder="name@voltfix.com">
+
+                    <label
+                        style="display: block; font-size: 0.7rem; font-weight: 800; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Access
+                        Password
+                    </label>
+                    <input type="password" class="secure-input" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 32px;">
+                    <input type="checkbox" style="accent-color: var(--accent); margin-top: 4px;" id="terms">
+                    <label for="terms" style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5;">
+                        I agree to the <a href="#" style="color: var(--accent); font-weight: 600;">Operational
+                            Protocols</a> and data security compliance agreements.
+                    </label>
+                </div>
+
+                <button type="button" class="btn btn-primary"
+                    style="width: 100%; padding: 20px; font-size: 1rem; border-radius: 12px;">Initialize Operator
+                    Profile</button>
+            </form>
+
+            <div
+                style="margin-top: 48px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px;">
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 8px;">Already have an
+                    account?</p>
+                <a href="auth.html?mode=login"
+                    style="color: white; font-weight: 700; text-decoration: underline;">Return to
+                    Command Console</a>
+            </div>
+        </div>
+
+        <!-- Scrollable content for Register page -->
+        <section style="width: 100%; max-width: 1100px; margin: 80px auto; padding: 0 20px;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; justify-content: center;">
+                <div
+                    style="text-align: center; color: white; padding: 32px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class="fas fa-shield-alt"
+                        style="font-size: 2rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h4 style="margin-bottom: 12px; font-weight: 800;">Secure Identity</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Multi-factor
+                        authentication enabled for all new operator registrations.</p>
+                </div>
+                <div
+                    style="text-align: center; color: white; padding: 32px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class="fas fa-project-diagram"
+                        style="font-size: 2rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h4 style="margin-bottom: 12px; font-weight: 800;">Direct Integration</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Gain immediate access
+                        to project timelines and technical schematics.</p>
+                </div>
+                <div
+                    style="text-align: center; color: white; padding: 32px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class="fas fa-headset" style="font-size: 2rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h4 style="margin-bottom: 12px; font-weight: 800;">24/7 Command Support</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Dedicated support
+                        channel for all registered network operators.</p>
+                </div>
+            </div>
+
+            <!-- Additional Content: Operational Capacity -->
+            <div
+                style="margin-top: 100px; padding: 60px; background: rgba(37, 99, 235, 0.05); border-radius: 32px; border: 1px solid rgba(37, 99, 235, 0.1);">
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <span class="trust-badge"
+                        style="background: rgba(37, 99, 235, 0.2); color: var(--accent);">Operational Capacity</span>
+                    <h2 style="color: white; font-size: 2.5rem; margin-top: 16px;">Network Deployment Stats</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 8px;">124+</div>
+                        <p
+                            style="font-size: 0.8rem; color: var(--accent); font-weight: 800; text-transform: uppercase;">
+                            Active Nodes</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 8px;">99.9%</div>
+                        <p
+                            style="font-size: 0.8rem; color: var(--accent); font-weight: 800; text-transform: uppercase;">
+                            Signal Uptime</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 8px;">24/7</div>
+                        <p
+                            style="font-size: 0.8rem; color: var(--accent); font-weight: 800; text-transform: uppercase;">
+                            NOC Monitoring</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 8px;">0.1s</div>
+                        <p
+                            style="font-size: 0.8rem; color: var(--accent); font-weight: 800; text-transform: uppercase;">
+                            Latency Gap</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

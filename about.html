@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage&Mission|VoltFix Infrastructure</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="blueprint-overlay"></div>
+
+    <header>
+
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt" style="color: var(--accent);"></i> VoltFix <span
+                    style="font-weight: 300; opacity: 0.5;">Reliability</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="index.html">Home <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html">Home 1</a>
+                        <a href="index3.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="active">About us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <a href="#">Dashboards <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard-user.html">User Console</a>
+                        <a href="dashboard-admin.html">Admin Terminal</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Account<i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="auth.html?mode=login">Login Portal</a>
+                        <a href="auth.html?mode=register">Register Account</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-tools">
+                <button id="rtl-toggle" class="btn" style="margin-right: 8px; font-weight: 800;"><i
+                        class="fas fa-globe"></i></button>
+                <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mega-hero"
+            style="padding: 200px 0 100px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;">
+                    <div style="position: relative; z-index: 1;">
+                        <div class="trust-badge" style="margin-bottom: 32px;">Est. 2011|Tier1Provider</div>
+                        <h1 style="font-size: 5rem; letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 48px;">
+                            Engineering <br>without <br><span style="color: var(--accent);">compromise.</span></h1>
+                        <p style="font-size: 1.5rem; color: var(--text-muted); line-height: 1.5; max-width: 720px;">
+                            VoltFix began with a singular focus: the elimination of failure in critical electrical
+                            Reliability. Today, we operate as a technical engineering partner for industrial leaders and
+                            national Reliability operators.</p>
+                    </div>
+
+                    <!-- System Stability Visualizer -->
+                    <div style="position: relative;">
+                        <!-- Main Card -->
+                        <div
+                            style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 24px; padding: 32px; box-shadow: var(--shadow-xl); position: relative; z-index: 2;">
+                            <!-- Header -->
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">Grid Stability
+                                        Index</h4>
+                                    <p style="margin: 4px 0 0; font-size: 0.8rem; color: var(--text-muted);">Real-time
+                                        Telemetry</p>
+                                </div>
+                                <div class="trust-badge"
+                                    style="background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: transparent;">
+                                    <span
+                                        style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
+                                    99.999%
+                                </div>
+                            </div>
+
+                            <!-- Visualization Lines -->
+                            <div
+                                style="display: flex; align-items: flex-end; justify-content: space-between; height: 160px; gap: 8px; margin-bottom: 32px;">
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); opacity: 0.2; border-radius: 8px; animation: bar-height 3s infinite alternate;">
+                                </div>
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); opacity: 0.4; border-radius: 8px; animation: bar-height 4s infinite alternate-reverse;">
+                                </div>
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); opacity: 0.6; border-radius: 8px; animation: bar-height 2.5s infinite alternate;">
+                                </div>
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); opacity: 0.8; border-radius: 8px; animation: bar-height 3.5s infinite alternate-reverse;">
+                                </div>
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); border-radius: 8px; animation: bar-height 3s infinite alternate;">
+                                </div>
+                                <div class="bar-anim"
+                                    style="width: 12%; background: var(--accent); opacity: 0.5; border-radius: 8px; animation: bar-height 4.5s infinite alternate-reverse;">
+                                </div>
+                            </div>
+
+                            <!-- Metrics Grid -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                                <div style="background: var(--bg-main); padding: 16px; border-radius: 12px;">
+                                    <p
+                                        style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">
+                                        Response Time</p>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">&lt;
+                                        12ms</div>
+                                </div>
+                                <div style="background: var(--bg-main); padding: 16px; border-radius: 12px;">
+                                    <p
+                                        style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">
+                                        Active Nodes</p>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">8,421
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decorative Floating Elements -->
+                        <div
+                            style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: var(--accent); opacity: 0.1; border-radius: 50%; filter: blur(20px);">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: -30px; left: -30px; width: 180px; height: 180px; border: 2px solid var(--border); border-radius: 50%; opacity: 0.5;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                @keyframes bar-height {
+                    0% {
+                        height: 30%;
+                    }
+
+                    100% {
+                        height: 100%;
+                    }
+                }
+            </style>
+        </section>
+
+        <!-- Core Engineering Values -->
+        <section style="padding: 120px 0; background: var(--bg-surface);">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; max-width: 700px; margin:0 auto 80px;">
+                    <span class="badge">Our DNA</span>
+                    <h2 style="font-size: 3rem;">Core Engineering <br>Principles</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                    <div
+                        style="padding: 40px; background: var(--bg-main); border-radius: 24px; border: 1px solid var(--border);">
+                        <i class="fas fa-microchip"
+                            style="font-size: 2rem; color: var(--accent); margin-bottom: 24px;"></i>
+                        <h4 style="margin-bottom: 16px;">Precision First</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Every connection, every line of code,
+                            and every deployment is Reviewed againstazero-error protocol.</p>
+                    </div>
+                    <div
+                        style="padding: 40px; background: var(--bg-main); border-radius: 24px; border: 1px solid var(--border);">
+                        <i class="fas fa-shield-alt"
+                            style="font-size: 2rem; color: var(--accent); margin-bottom: 24px;"></i>
+                        <h4 style="margin-bottom: 16px;">Redundant Safety</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">We build Reliability with multi-layered
+                            backups to ensure mission-critical infrastructure never goes dark.</p>
+                    </div>
+                    <div
+                        style="padding: 40px; background: var(--bg-main); border-radius: 24px; border: 1px solid var(--border);">
+                        <i class="fas fa-leaf" style="font-size: 2rem; color: var(--accent); margin-bottom: 24px;"></i>
+                        <h4 style="margin-bottom: 16px;">Future Sustainable</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Integrating renewable source management
+                            with traditional distribution Reliabilitys for long-term viability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Milestones Timeline -->
+        <section style="padding: 120px 0; background: var(--bg-main);">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="badge">The Timeline</span>
+                    <h2>Historical <br>Milestones</h2>
+                </div>
+                <div style="position: relative; margin-top: 60px;">
+                    <!-- Timeline Line -->
+                    <div
+                        style="position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border);">
+                    </div>
+
+                    <!-- Milestone1-->
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 60px;">
+                        <div
+                            style="position: absolute; left: 11px; top: 0; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; border: 4px solid var(--bg-main);">
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary);">2012: The Genesis</h3>
+                        <p style="color: var(--text-muted); margin-top: 8px;">VoltFix founded asaspecialized
+                            consulting firm for high-voltage industrial facilities.</p>
+                    </div>
+                    <!-- Milestone2-->
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 60px;">
+                        <div
+                            style="position: absolute; left: 11px; top: 0; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; border: 4px solid var(--bg-main);">
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary);">2018: Global Expansion</h3>
+                        <p style="color: var(--text-muted); margin-top: 8px;">Opened regional hubs in4continents,
+                            establishing our Global Deployment Protocol.</p>
+                    </div>
+                    <!-- Milestone3-->
+                    <div style="position: relative; padding-left: 60px;">
+                        <div
+                            style="position: absolute; left: 11px; top: 0; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; border: 4px solid var(--bg-main);">
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary);">2024: The AI Frontier</h3>
+                        <p style="color: var(--text-muted); margin-top: 8px;">Launched the second-generation AI
+                            Predictive Reliability Engine, now managing over 500+ national Reliabilitys.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Doctrine -->
+        <section style="padding: 120px 0; background: var(--bg-surface);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center;">
+                    <div>
+                        <span class="badge" style="margin-bottom: 24px;">The Engineering Doctrine</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 32px;">Grit. Precision. <br>Oversight.</h2>
+                        <p style="margin-bottom: 32px; color: var(--text-muted); font-size: 1.125rem;">Our methodology
+                            is rooted in the "Zero-Thermal-Failure" principle. Every deployment, fromasimple
+                            commercial hub toaregional Facility, followsarigorous 14-point technical Review before
+                            it goes live.</p>
+                        <ul style="display: flex; flex-direction: column; gap: 20px;">
+                            <li style="display: flex; gap: 16px; align-items: start;">
+                                <i class="fas fa-microchip" style="color: var(--accent); margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-weight: 800;">Digital Twin Modeling</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">We simulate load stress
+                                        patterns inadigital environment before physical implementation.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 16px; align-items: start;">
+                                <i class="fas fa-satellite" style="color: var(--accent); margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-weight: 800;">Remote Monitoring</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">24/7 technical oversight
+                                        from our centralized operations facility.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div style="position: relative;">
+                            <img src="assets/images/global_network.png" alt="Engineering Team"
+                                style="border-radius: 24px; box-shadow: var(--shadow-xl); max-height: 500px; width: 100%; object-fit: cover;">
+                            <div class="glass"
+                                style="position: absolute; bottom: 40px; right: -20px; padding: 24px; border-radius: 16px; width: 180px;">
+                                <div style="font-size: 2.2rem; font-weight: 900; color: var(--accent);"><span
+                                        class="counter" data-target="5.2">0</span>k</div>
+                                <div style="font-weight: 800; font-size: 0.75rem; margin-top: 4px;">Deployments Reviewed
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Integrity -->
+        <section style="padding: 120px 0;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Mission Critical Timeline</h2>
+                    <p>A history of technical milestones and unyielding Reliability.</p>
+                </div>
+
+                <div style="max-width: 1000px; margin: 80px auto;">
+                    <div style="display: flex; gap: 60px; margin-bottom: 80px;">
+                        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent); width: 100px;">2011</div>
+                        <div style="padding-left: 40px; border-left: 2px solid var(--border); position: relative;">
+                            <div
+                                style="position: absolute; left: -9px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent);">
+                            </div>
+                            <h3 style="margin-bottom: 12px; font-size: 1.5rem;">Reliability Inception</h3>
+                            <p style="color: var(--text-muted);">VoltFix founded asaspecialized engineering desk for
+                                high-density electrical repairs in Industrial Sector 4.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 60px; margin-bottom: 80px;">
+                        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent); width: 100px;">2018</div>
+                        <div style="padding-left: 40px; border-left: 2px solid var(--border); position: relative;">
+                            <div
+                                style="position: absolute; left: -9px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent);">
+                            </div>
+                            <h3 style="margin-bottom: 12px; font-size: 1.5rem;">Reliability Infrastructure Reliability
+                            </h3>
+                            <p style="color: var(--text-muted);">Expansion into national Reliability management and
+                                industrial
+                                high-voltage distribution Reliability.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 60px;">
+                        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent); width: 100px;">2024</div>
+                        <div style="padding-left: 40px; border-left: 2px solid var(--border); position: relative;">
+                            <div
+                                style="position: absolute; left: -9px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent);">
+                            </div>
+                            <h3 style="margin-bottom: 12px; font-size: 1.5rem;">AI Predictive Ops</h3>
+                            <p style="color: var(--text-muted);">Full integration of machine learning fault patterns
+                                across our client-managed Infrastructure Operationss.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Distribution -->
+        <section style="padding: 120px 0; background: var(--bg-surface);">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; max-width: 800px; margin:0 auto 80px;">
+                    <span class="badge">Technical Breakdown</span>
+                    <h2>Reliability Expertise Distribution</h2>
+                    <p>Our workforce is divided into specialized tactical units to ensure every project receives elite
+                        engineering oversight.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;">
+                    <div style="text-align: center; padding: 40px; background: var(--bg-main); border-radius: 20px;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;"><span
+                                class="counter" data-target="42">0</span>%
+                        </div>
+                        <h4
+                            style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
+                            Reliability Design</h4>
+                    </div>
+                    <div style="text-align: center; padding: 40px; background: var(--bg-main); border-radius: 20px;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;"><span
+                                class="counter" data-target="28">0</span>%
+                        </div>
+                        <h4
+                            style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
+                            Field Engineering</h4>
+                    </div>
+                    <div style="text-align: center; padding: 40px; background: var(--bg-main); border-radius: 20px;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;"><span
+                                class="counter" data-target="18">0</span>%
+                        </div>
+                        <h4
+                            style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
+                            Digital Reliability</h4>
+                    </div>
+                    <div style="text-align: center; padding: 40px; background: var(--bg-main); border-radius: 20px;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;"><span
+                                class="counter" data-target="12">0</span>%
+                        </div>
+                        <h4
+                            style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
+                            R&D Future lab</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Leadership -->
+        <section style="padding: 120px 0; background: var(--bg-main); border-top: 1px solid var(--border);">
+            <div class="container">
+                <div class="section-header reveal" style="margin-bottom: 80px;">
+                    <span class="badge">Leadership</span>
+                    <h2>Executive Engineering Council</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+                    <div>
+                        <img src="assets/images/marcus_chen.png" alt="Dr Marcus Vane"
+                            style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 24px; margin-bottom: 24px;">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 8px;">Dr. Marcus Vane</h4>
+                        <p
+                            style="font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 16px;">
+                            Founder&Chief Reliability. Architect</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Former lead engineer at National
+                            Reliability
+                            Ops, holding 14 patents in superconducting power nodes.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800&h=800&fm=jpg"
+                            alt="Elena Ross"
+                            style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 24px; margin-bottom: 24px;">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 8px;">Elena Ross</h4>
+                        <p
+                            style="font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 16px;">
+                            Head of Reliability Reliability</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Expert in fault-tolerant computing and
+                            large-scale industrial automation ISO 45001 Protocols.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800&h=800&fm=jpg"
+                            alt="Samuel Chen"
+                            style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 24px; margin-bottom: 24px;">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 8px;">Samuel Chen</h4>
+                        <p
+                            style="font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 16px;">
+                            Global Operations Director</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Specializes in international
+                            infrastructure logistics and rapid deployment logistics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contact Banner - Wide Spread -->
+        <section class="quick-contact-banner"
+            style="background: var(--bg-surface); padding: 100px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; width: 100%;">
+            <div class="tech-grid" style="position: absolute; inset: 0; opacity: 0.1; z-index: 0;"></div>
+            <div class="container" style="max-width: 1600px; position: relative; z-index: 1;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 60px;">
+                    <div style="max-width: 700px;">
+                        <span class="badge"
+                            style="background: rgba(37, 99, 235, 0.1); color: var(--accent); margin-bottom: 24px;">Lead
+                            the Grid</span>
+                        <h2 style="font-size: 3.5rem; margin-bottom: 32px; line-height: 1.1;">Build the Future of
+                            <br><span style="color: var(--accent);">Infrastructure.</span>
+                        </h2>
+                        <p style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.6;">Join our engineering
+                            council or consult on critical deployments. We are at the forefront of power reliability.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 24px; align-items: center;">
+                        <a href="contact.html" class="btn btn-primary"
+                            style="padding: 24px 56px; font-size: 1.1rem; font-weight: 800;">Consult Chief Engineer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-bolt" style="color: var(--accent);"></i> VoltFix <span
+                            style="font-weight: 300; opacity: 0.5;">Reliability</span>
+                    </a>
+                    <p>Reliability infrastructure engineering with zero-failure tolerance for industrial leaders and
+                        national utility operators.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav-col">
+                    <h4>Operations</h4>
+                    <ul>
+                        <li><a href="about.html">History</a></li>
+                        <li><a href="services.html">Capabilities</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="index.html">Specialized Enterprise</a></li>
+                        <li><a href="index3.html">Modern Infrastructure</a></li>
+                        <li><a href="services.html">Smart Grid Analytics</a></li>
+                        <li><a href="services.html">Data Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h4>Contact HQ</h4>
+                    <ul>
+                        <li><i class="fas fa-location-dot" style="margin-right: 12px; color: var(--accent);"></i> 101
+                            Grid Station Way, Industrial Sector 4
+                        </li>
+                        <li><i class="fas fa-phone" style="margin-right: 12px; color: var(--accent);"></i>
+                            engineering@voltfix.com</li>
+                        <li><a href="mailto:projects@VoltFix.com"><i class="fas fa-envelope"
+                                    style="margin-right: 12px; color: var(--accent);"></i> projects@VoltFix.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">Ac 2026 VoltFix.</div>
+                <div class="footer-legal">
+                    <a href="#">ISO 45001 Protocol</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found|VoltFix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #020617;
+    color: white;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    }
+
+    .error-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    }
+
+    .error-code {
+    font-size: 10rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.05em;
+    color: white;
+    opacity: 0.1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    }
+
+    .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(220, 38, 38, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav-container">
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt" style="color: var(--accent);"></i> VoltFix <span
+        style="font-weight: 300; opacity: 0.5;">Reliability</span>
+    </a>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index3.html">Solutions</a>
+      <a href="about.html">About us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard-user.html">User Dashboard</a>
+      <a href="dashboard-admin.html">Admin Dashboard</a>
+      <a href="auth.html?mode=login">Login</a>
+    </nav>
+    <div class="nav-tools">
+      <button id="rtl-toggle" class="btn" style="margin-right: 8px; font-weight: 800;"><i
+        class="fas fa-globe"></i></button>
+      <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+    </div>
+    </div>
+  </header>
+
+  <div class="blueprint-overlay"></div>
+
+  <div class="error-page">
+    <div class="tech-grid" style="position: absolute; inset: 0; opacity: 0.1;"></div>
+
+    <div class="error-content">
+    <div class="status-pill">
+      <i class="fas fa-circle-info"></i> Page Not Found
+    </div>
+    <div class="error-code">404</div>
+    <h1 style="color: white; font-size: 3rem; margin-bottom: 24px;">Content Not Found.</h1>
+    <p style="color: rgba(255,255,255,0.4); font-size: 1.125rem; margin-bottom: 48px; line-height: 1.6;">The
+      page you are looking for might have been moved or is temporarily unavailable.</p>
+    <a href="index.html" class="btn btn-primary" style="padding: 18px 36px; border-radius: 12px;">Return
+      Home</a>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reliability. Analytics|VoltFix Admin</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --sidebar-width: 260px;
+    }
+
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+      padding-top: 90px;
+      width: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      margin-left: 0;
+      padding: 40px 60px;
+      background: var(--bg-main);
+      min-width: 0;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      position: relative;
+    }
+
+    .status-dot.active {
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+    }
+
+    .status-dot.active::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      10% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    .admin-card {
+      background: var(--bg-surface);
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: var(--transition-base);
+    }
+
+    .admin-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin: 12px 0;
+      line-height: 1;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 012px;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 020px 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .data-table tr {
+      background: var(--bg-surface);
+      transition: var(--transition-fast);
+    }
+
+    .data-table tr:hover {
+      background: var(--bg-main);
+      transform: scale(1.01);
+    }
+
+    .data-table td {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td:first-child {
+      border-left: 1px solid var(--border);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .data-table td:last-child {
+      border-right: 1px solid var(--border);
+      border-radius: 012px 12px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-bolt" style="color: var(--accent);"></i> VoltFix <span
+          style="font-weight: 300; opacity: 0.5;">Reliability</span>
+      </a>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links">
+        <div class="dropdown">
+          <a href="index.html">Home <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html">Home 1</a>
+            <a href="index3.html">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html">About us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <div class="dropdown">
+          <a href="#" class="active">Dashboards <i class="fas fa-chevron-down"
+              style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="dashboard-user.html">User Console</a>
+            <a href="dashboard-admin.html">Admin Terminal</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Account <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="auth.html?mode=login">Login Portal</a>
+            <a href="auth.html?mode=register">Register Account</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-tools">
+        <button id="rtl-toggle" class="btn" style="margin-right: 8px; font-weight: 800;"><i
+            class="fas fa-globe"></i></button>
+        <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <main class="main-content">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
+        <div>
+          <h1 style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em;">System Overview</h1>
+          <p style="color: var(--text-muted); font-weight: 500;"><span class="status-dot active"></span>
+            Status: Active • Reviewing Data</p>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <button class="btn btn-outline"><i class="fas fa-file-export" style="margin-right: 8px;"></i> Save
+            PDF</button>
+          <button class="btn btn-primary"><i class="fas fa-plus" style="margin-right: 8px;"></i> New
+            Entry</button>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px;">
+        <div class="admin-card">
+          <span
+            style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Budget
+            Tracking</span>
+          <div class="metric-value">$842.1k</div>
+          <span style="color: var(--success); font-weight: 700; font-size: 0.875rem;"><i
+              class="fas fa-check-circle"></i> On Target</span>
+        </div>
+        <div class="admin-card">
+          <span
+            style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Active
+            Projects</span>
+          <div class="metric-value">18</div>
+          <span style="color: var(--text-muted); font-weight: 600; font-size: 0.875rem;">3 Pending
+            Review</span>
+        </div>
+        <div class="admin-card">
+          <span
+            style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Efficiency
+            Rating</span>
+          <div class="metric-value">98.4%</div>
+          <span style="color: var(--text-muted); font-weight: 700; font-size: 0.875rem;">Optimal</span>
+
+        </div>
+        <div class="admin-card">
+          <span
+            style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Asset
+            Status</span>
+          <div class="metric-value">Active</div>
+          <span style="color: var(--success); font-weight: 700; font-size: 0.875rem;">No Latency Detected</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
+        <div class="admin-card" style="padding: 0;">
+          <div
+            style="padding: 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-weight: 900;">Latest Communications</h3>
+            <a href="#" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">See All</a>
+          </div>
+          <div style="padding: 24px;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Client/ID</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="font-weight: 700;">Nexus Data Center</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">REQ-8821</div>
+                  </td>
+                  <td>Sector 7G-A</td>
+                  <td><span
+                      style="padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 99px; font-size: 0.75rem; font-weight: 800;">PENDING</span>
+                  </td>
+                  <td><span style="color: #ef4444; font-weight: 800;">CRITICAL</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="font-weight: 700;">Global Logistics HQ</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">REQ-8819</div>
+                  </td>
+                  <td>Industrial Sector 4</td>
+                  <td><span
+                      style="padding: 4px 12px; background: rgba(16, 185, 129, 0.1); color: var(--success); border-radius: 99px; font-size: 0.75rem; font-weight: 800;">ContactED</span>
+                  </td>
+                  <td>STANDARD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h3 style="font-weight: 900; margin-bottom: 24px;">Project Pulse</h3>
+          <div style="height: 200px; display: flex; align-items: flex-end; gap: 8px; padding-bottom: 10px;">
+            <div class="bar-pulse"
+              style="flex: 1; height: 30%; background: var(--accent); opacity: 0.4; border-radius: 4px;"></div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 50%; background: var(--accent); opacity: 0.5; border-radius: 4px;"></div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 80%; background: var(--accent); opacity: 0.7; border-radius: 4px;"></div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 40%; background: var(--accent); opacity: 0.4; border-radius: 4px;"></div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 95%; background: var(--accent); border-radius: 4px; box-shadow: 0 0 10px var(--accent-glow);">
+            </div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 60%; background: var(--accent); opacity: 0.6; border-radius: 4px;"></div>
+            <div class="bar-pulse"
+              style="flex: 1; height: 75%; background: var(--accent); opacity: 0.5; border-radius: 4px;"></div>
+          </div>
+          <div
+            style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.65rem; font-weight: 700; color: var(--text-muted);">
+            <span>MON</span>
+            <span>WED</span>
+            <span>FRI</span>
+            <span>SUN</span>
+          </div>
+          <style>
+            .bar-pulse {
+              transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .bar-pulse:hover {
+              filter: brightness(1.2);
+              transform: scaleY(1.1);
+            }
+          </style>
+        </div>
+
+      </div>
+
+
+      <!-- New Scrollable Admin Content -->
+      <div style="margin-top: 48px;">
+        <div class="admin-card" style="margin-bottom: 32px;">
+          <h3 style="font-weight: 900; margin-bottom: 32px;">System Resource Analysis</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div>
+              <span
+                style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">CPU
+                Allocation</span>
+              <div
+                style="height: 140px; width: 140px; border: 12px solid var(--border); border-radius: 50%; margin: 24px auto; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: 1.5rem; font-weight: 900;">24%</div>
+              </div>
+            </div>
+            <div>
+              <span
+                style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Node
+                Congestion</span>
+              <div
+                style="height: 140px; width: 140px; border: 12px solid var(--accent); border-radius: 50%; margin: 24px auto; position: relative; display: flex; align-items: center; justify-content: center; box-shadow:0 0 20px var(--accent-light);">
+                <div style="font-size: 1.5rem; font-weight: 900;">12%</div>
+              </div>
+            </div>
+            <div>
+              <span
+                style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Storage
+                Density</span>
+              <div
+                style="height: 140px; width: 140px; border: 12px solid var(--primary); border-radius: 50%; margin: 24px auto; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: 1.5rem; font-weight: 900;">68%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h3 style="font-weight: 900; margin-bottom: 32px;">Global Operational Nodes</h3>
+          <div style="overflow-x: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Node ID</th>
+                  <th>Region</th>
+                  <th>Latency</th>
+                  <th>Traffic</th>
+                  <th>Uptime</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span style="font-family: monospace; font-weight: 700;">NODE-EU-01</span></td>
+                  <td>Frankfurt, DE</td>
+                  <td style="color: var(--success); font-weight: 700;">12ms</td>
+                  <td>4.2TB/s</td>
+                  <td><span style="font-weight: 800;">100.0%</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-family: monospace; font-weight: 700;">NODE-US-04</span></td>
+                  <td>Ashburn, VA</td>
+                  <td style="color: var(--success); font-weight: 700;">8ms</td>
+                  <td>8.7TB/s</td>
+                  <td><span style="font-weight: 800;">99.99%</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-family: monospace; font-weight: 700;">NODE-AS-09</span></td>
+                  <td>Singapore, SG</td>
+                  <td style="color: var(--warning); font-weight: 700;">45ms</td>
+                  <td>2.1TB/s</td>
+                  <td><span style="font-weight: 800;">99.97%</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-family: monospace; font-weight: 700;">NODE-AU-02</span></td>
+                  <td>Sydney, AU</td>
+                  <td style="color: var(--success); font-weight: 700;">32ms</td>
+                  <td>1.5TB/s</td>
+                  <td><span style="font-weight: 800;">100.0%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Alerts and Maintenance -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px;">
+        <div class="admin-card">
+          <h3 style="font-weight: 900; margin-bottom: 32px;">System Critical Alerts</h3>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div
+              style="padding: 16px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent); border-radius: 4px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span style="font-weight: 800; color: var(--accent); font-size: 0.8rem;">THERMAL OVERLOAD</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">2m ago</span>
+              </div>
+              <p style="font-size: 0.85rem;">Node-EU-01 shifted to elevated core temperature. Normal operation.
+              </p>
+            </div>
+            <div
+              style="padding: 16px; background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; border-radius: 4px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span style="font-weight: 800; color: #f59e0b; font-size: 0.8rem;">LATENCY SPIKE</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">14m ago</span>
+              </div>
+              <p style="font-size: 0.85rem;">Signal jitter detected in Asian Reliability sector. Rerouting Analytics
+                traffic.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h3 style="font-weight: 900; margin-bottom: 32px;">Maintenance Schedule</h3>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div
+              style="display: flex; align-items: center; gap: 16px; padding: 12px; border-bottom: 1px solid var(--border);">
+              <div style="text-align: center; min-width: 60px;">
+                <div style="font-size: 1.25rem; font-weight: 900;">12</div>
+                <div style="font-size: 0.65rem; text-transform: uppercase;">Jan</div>
+              </div>
+              <div>
+                <h5 style="margin-bottom: 2px;">Facility Beta Cleanup</h5>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Routine debris removal and hardware
+                  dusting.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px; padding: 12px;">
+              <div style="text-align: center; min-width: 60px;">
+                <div style="font-size: 1.25rem; font-weight: 900;">15</div>
+                <div style="font-size: 0.65rem; text-transform: uppercase;">Jan</div>
+              </div>
+              <div>
+                <h5 style="margin-bottom: 2px;">Core Logic Update</h5>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">System-wide kernel patch for Node
+                  Standardlation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white !important; border-color: rgba(255,255,255,0.1);">
+            <div
+              style="position: relative; width: 32px; height: 32px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 0 15px var(--accent-glow);">
+              <i class="fas fa-bolt" style="color: white; font-size: 1.2rem;"></i>
+            </div>
+            VOLTFIX <span style="font-weight: 300; opacity: 0.6; margin-left: 4px; color: white;">RELIABILITY</span>
+          </a>
+          <p>Reliability infrastructure engineering with zero-failure tolerance for industrial leaders and
+            national utility operators.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Operations</h4>
+          <ul>
+            <li><a href="about.html">History</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="index.html">Specialized Enterprise</a></li>
+            <li><a href="index3.html">Modern Infrastructure</a></li>
+            <li><a href="services.html">Smart Grid Analytics</a></li>
+            <li><a href="services.html">Data Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Contact HQ</h4>
+          <ul>
+            <li style="color: rgba(255,255,255,0.6); font-size: 0.9375rem;"><i class="fas fa-location-dot"
+                style="margin-right: 12px; color: var(--accent);"></i> 101 Grid Station Way, Industrial Sector 4
+            </li>
+            <li style="color: rgba(255,255,255,0.6); font-size: 0.9375rem;"><i class="fas fa-phone"
+                style="margin-right: 12px; color: var(--accent);"></i> engineering@voltfix.com</li>
+            <li><a href="mailto:projects@VoltFix.com"><i class="fas fa-envelope"
+                  style="margin-right: 12px; color: var(--accent);"></i> projects@VoltFix.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">Ac 2026 VoltFix.</div>
+        <div class="footer-legal">
+          <a href="#">ISO 45001 Protocol</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>

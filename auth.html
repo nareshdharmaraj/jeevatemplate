@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Access | VoltFix Reliability</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+            position: relative;
+            background: #020617;
+            overflow-x: hidden;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (max-width: 480px) {
+            .auth-box {
+                padding: 40px 24px;
+                border-radius: 16px;
+            }
+        }
+
+        .terminal-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .secure-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: var(--transition-base);
+        }
+
+        .secure-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .auth-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .auth-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div
+                    style="position: relative; width: 32px; height: 32px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 0 15px var(--accent-glow);">
+                    <i class="fas fa-bolt" style="color: white; font-size: 1.2rem;"></i>
+                </div>
+                VOLTFIX <span style="font-weight: 300; opacity: 0.6; margin-left: 4px;">RELIABILITY</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="index.html">Home <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html">Home 1</a>
+                        <a href="index3.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html">About us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <a href="#">Dashboards <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard-user.html">User Console</a>
+                        <a href="dashboard-admin.html">Admin Terminal</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="active">Account<i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="auth.html?mode=login">Login Portal</a>
+                        <a href="auth.html?mode=register">Register Account</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-tools">
+                <button id="rtl-toggle" class="btn" style="margin-right: 8px; font-weight: 800;"><i
+                        class="fas fa-globe"></i></button>
+                <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="blueprint-overlay"></div>
+
+    <main class="auth-screen">
+        <div class="tech-grid" style="position: absolute; inset: 0; opacity: 0.1;"></div>
+
+        <div class="auth-box">
+            <div class="terminal-header">
+                <div class="status-badge" id="status-badge">
+                    <span
+                        style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
+                    <span id="badge-text">Grid Operations Command</span>
+                </div>
+                <h1 style="color: white; font-size: 2.25rem; font-weight: 900; margin-bottom: 8px;" id="auth-title">
+                    Client Portal</h1>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem;" id="auth-subtitle">Enter your project
+                    credentials for secure dashboard access.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuth('login')">Login</button>
+                <button class="auth-tab" onclick="switchAuth('register')">Register</button>
+            </div>
+
+            <!-- Login Section -->
+            <div id="login-section" class="auth-section active">
+                <form>
+                    <label class="input-label">User ID / Email</label>
+                    <input type="text" class="secure-input" placeholder="Enter credentials">
+
+                    <label class="input-label">Access Password</label>
+                    <input type="password" class="secure-input" placeholder="">
+
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                        <label
+                            style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                            <input type="checkbox" style="accent-color: var(--accent);"> Keep session active
+                        </label>
+                        <a href="#" style="color: var(--accent); font-size: 0.85rem; font-weight: 700;">Forgot
+                            Password?</a>
+                    </div>
+
+                    <a href="dashboard-admin.html" class="btn btn-primary"
+                        style="width: 100%; padding: 18px; font-size: 1rem; border-radius: 12px;">Verify & Access
+                        Terminal</a>
+                </form>
+            </div>
+
+            <!-- Register Section -->
+            <div id="register-section" class="auth-section">
+                <form>
+                    <label class="input-label">Full Name</label>
+                    <input type="text" class="secure-input" placeholder="Operator Name">
+
+                    <label class="input-label">Work Email</label>
+                    <input type="email" class="secure-input" placeholder="name@voltfix.com">
+
+                    <label class="input-label">Access Password</label>
+                    <input type="password" class="secure-input" placeholder="">
+
+                    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 32px;">
+                        <input type="checkbox" style="accent-color: var(--accent); margin-top: 4px;" id="terms">
+                        <label for="terms" style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5;">
+                            I agree to the <a href="#" style="color: var(--accent); font-weight: 600;">Operational
+                                Protocols</a> and data security compliance agreements.
+                        </label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary"
+                        style="width: 100%; padding: 18px; font-size: 1rem; border-radius: 12px;"
+                        onclick="window.location.href='dashboard-user.html'">Initialize Operator Profile</button>
+                </form>
+            </div>
+
+            <p
+                style="color: rgba(255,255,255,0.2); font-size: 0.7rem; line-height: 1.6; margin-top: 32px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
+                NOTICE: This is a secure portal for certified project leads. Multi-factor authentication
+                is required for operational sector access. Unauthorized access is monitored.
+            </p>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+    <script>
+        function switchAuth(mode) {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const sections = document.querySelectorAll('.auth-section');
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const badgeText = document.getElementById('badge-text');
+            const badgeDot = document.querySelector('#status-badge span');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.innerText.toLowerCase() === mode) tab.classList.add('active');
+            });
+
+            sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === mode + '-section') section.classList.add('active');
+            });
+
+            if (mode === 'login') {
+                title.innerText = 'Client Portal';
+                subtitle.innerText = 'Enter your project credentials for secure dashboard access.';
+                badgeText.innerText = 'Grid Operations Command';
+                badgeDot.style.background = 'var(--success)';
+            } else {
+                title.innerText = 'Create Account';
+                subtitle.innerText = 'Initialize your operator profile for secure network deployment access.';
+                badgeText.innerText = 'Personnel Deployment';
+                badgeDot.style.background = 'var(--accent)';
+            }
+        }
+
+        // Handle URL parameters for direct linking
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode');
+            if (mode === 'register') {
+                switchAuth('register');
+            }
+        }
+    </script>
+</body>
+
+</html>
